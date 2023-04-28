@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
+import EditorsInsight from '../../news/EditorsInsight/EditorsInsight';
 
 const LeftNav = () => {
     let [categories, setCategories] = useState([])
@@ -17,10 +18,10 @@ const LeftNav = () => {
                 {
                     categories.map(category => <p key={category.id}>
                         <NavLink 
-                            to={`categori/${category.id}`} 
+                            to={`categories/${category.id}`} 
                             className={`text-decoration-none ${({ isActive}) =>
                             isActive
-                                ? "text-decoration-undarline"
+                                ? "text-decoration-underline"
                                 : isPending
                                     ? "pending"
                                     : ""}
@@ -31,6 +32,7 @@ const LeftNav = () => {
                     </p>)
                 }
             </div>
+            <EditorsInsight></EditorsInsight>
         </div>
     );
 };

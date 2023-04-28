@@ -4,16 +4,15 @@ import { Outlet } from 'react-router-dom';
 import { Container, Row, Col } from 'react-bootstrap';
 import LeftNav from '../pages/shared/LeftNav/LeftNav';
 import RightNav from '../pages/shared/RightNav/RightNav';
+import Headertitle from '../pages/shared/Header/Headertitle';
 
-const Layout = () => {
-
+const NewsLayout = () => {
     return (
         <div>
-            <Header></Header>
             <Container>
+                <Headertitle></Headertitle>
                 <Row>
-                    <Col lg={3}><LeftNav></LeftNav></Col>
-                    <Col lg={6}><Outlet></Outlet></Col>
+                    <Col lg={9}><Outlet></Outlet></Col>
                     <Col lg={3}><RightNav></RightNav></Col>
                 </Row>
             </Container>
@@ -21,4 +20,4 @@ const Layout = () => {
     );
 };
 
-export default Layout;
+export default NewsLayout;
