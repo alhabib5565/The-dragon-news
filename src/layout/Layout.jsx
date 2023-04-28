@@ -6,7 +6,6 @@ import LeftNav from '../pages/shared/LeftNav/LeftNav';
 import RightNav from '../pages/shared/RightNav/RightNav';
 
 const Layout = () => {
-
     return (
         <div>
             <Header></Header>
