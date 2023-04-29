@@ -18,7 +18,7 @@ const LeftNav = () => {
                 {
                     categories.map(category => <p key={category.id}>
                         <NavLink 
-                            to={`categories/${category.id}`} 
+                            to={`/categories/${category.id}`} 
                             className={`text-decoration-none ${({ isActive}) =>
                             isActive
                                 ? "text-decoration-underline"

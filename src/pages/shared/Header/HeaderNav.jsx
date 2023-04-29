@@ -7,7 +7,14 @@ import { FaUserCircle } from 'react-icons/fa';
 import { Button, Container } from 'react-bootstrap';
 import { AuthContext } from '../../../Provider/AuthProvider';
 const HeaderNav = () => {
-    let { user } = useContext(AuthContext)
+    let { user, logOut } = useContext(AuthContext)
+    let handleLogut = () => {
+        logOut()
+        .then(console.log('logOut Successfull'))
+        .catch(error => {
+            console.log('logout error',error)
+        })
+    }
     return (
         <>
             <Navbar collapseOnSelect expand="lg" bg="light" variant="light">
@@ -20,9 +27,9 @@ const HeaderNav = () => {
                             <Nav.Link href="#pricing">Career</Nav.Link>
                         </Nav>
                         <Nav>
-                            <Nav.Link href="#deets"><FaUserCircle className='fs-1 text-secondary'></FaUserCircle></Nav.Link>
+                            {user && <Nav.Link href="#deets"><FaUserCircle className='fs-1 text-secondary'></FaUserCircle></Nav.Link>}
                             {
-                                user ? <Button variant="secondary">Logout</Button> :
+                                user ? <Button onClick={handleLogut} variant="secondary">Logout</Button> :
                                     <Link to='/login'> <Button variant="secondary">Login</Button></Link>
                             }
                         </Nav>

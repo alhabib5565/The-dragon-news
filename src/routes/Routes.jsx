@@ -7,6 +7,8 @@ import News from "../pages/news/news/News";
 import LoginLayout from "../layout/LoginLayout";
 import Login from "../pages/LoginReg/Login";
 import Register from "../pages/LoginReg/Register";
+import PrivateRoute from "../PrivateRoute/PrivateRoute";
+import Terms from "../pages/LoginReg/Terms";
 
 
 const router = createBrowserRouter([
@@ -25,31 +27,33 @@ const router = createBrowserRouter([
             {
                 path: 'register',
                 element: <Register></Register>
+            },
+            {
+                path: 'terms',
+                element: <Terms></Terms>
             }
         ]
     },
+
     {
         path: '/categories',
         element: <Layout></Layout>,
         children: [
-            {
-                path: '/',
-                element: <Category></Category>,
-                loader: ()=> fetch(`http://localhost:5000/news`)
-            },
+           
             {
                 path: ':id',
                 element: <Category></Category>,
                 loader: ({params}) => fetch(`http://localhost:5000/categories/${params.id}`)
             }
         ]
-    },{
+    },
+    {
         path: 'news',
         element: <NewsLayout></NewsLayout>,
         children: [
             {
                 path: ':id',
-                element: <News></News>,
+                element: <PrivateRoute><News></News></PrivateRoute>,
                 loader: ({params}) => fetch(`http://localhost:5000/news/${params.id}`)
             }
         ]
